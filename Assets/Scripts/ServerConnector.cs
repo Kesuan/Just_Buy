@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
 
 public class ServerConnector : MonoBehaviour
 {
+    public TextMeshPro text;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +25,8 @@ public class ServerConnector : MonoBehaviour
         UnityWebRequest request = UnityWebRequest.Get("http://47.94.221.211:3000/uploadData");
         yield return request.SendWebRequest();
 
-        Debug.Log("Response: " + request.downloadHandler.text);
+        // Debug.Log("Response: " + request.downloadHandler.text);
+        text.text = request.downloadHandler.text;
     }
 
     IEnumerator GetUploadSpecialData()
@@ -30,6 +34,7 @@ public class ServerConnector : MonoBehaviour
         UnityWebRequest request = UnityWebRequest.Get("http://47.94.221.211:3000/uploadData?uid=10010&pwd=123456");
         yield return request.SendWebRequest();
 
-        Debug.Log("Response: " + request.downloadHandler.text);
+        // Debug.Log("Response: " + request.downloadHandler.text);
+        text.text = request.downloadHandler.text;
     }
 }

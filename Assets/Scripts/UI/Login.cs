@@ -17,22 +17,29 @@ public class Login : MonoBehaviour
 
     IEnumerator LoginRequest()
     {
-        if (phone.text == "" || password.text == "")
+        string phoneText = StringProcess.Trim(phone.text);
+        string passwordText = StringProcess.Trim(password.text);
+        if (phoneText == "" || passwordText == "")
         {
-            statusText.text = "Please fill in all fields!";
+            statusText.text = "请输入手机号和密码！";
             yield break;
         }
 
-        UnityWebRequest request = UnityWebRequest.Get("http://47.94.221.211:3000/login?phone=" + phone.text + "&password=" + password.text);
+        UnityWebRequest request = UnityWebRequest.Get("http://47.94.221.211:3000/login?phone=" + phoneText + "&password=" + passwordText);
         yield return request.SendWebRequest();
 
+        Debug.Log("Response: " + request.downloadHandler.text);
         if (request.downloadHandler.text == "success")
         {
-            statusText.text = "Login Success!";
+            statusText.text = "登录成功！";
+            statusText.color = Color.green;
+
+            yield return new WaitForSeconds(1);
         }
         else
         {
-            statusText.text = "Login Failed!";
+            statusText.text = "登录失败！";
+            statusText.color = Color.red;
         }
     }
 }

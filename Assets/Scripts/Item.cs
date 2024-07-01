@@ -1,13 +1,13 @@
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 
 public class Item : MonoBehaviour
 {
-    public string iname = "Lian";
+    public string iname;
     public string showname;
     public string description;
     public float price;
@@ -29,7 +29,7 @@ public class Item : MonoBehaviour
 
         nameText.text = showname;
         descriptionText.text = description;
-        priceText.text = price.ToString();
+        priceText.text = "单价:" + price.ToString() + "元";
         arButton.SetActive(ar);
 
         StartCoroutine(DownloadImage());
@@ -49,6 +49,61 @@ public class Item : MonoBehaviour
 
     public void OnBuyButtonClicked()
     {
+        StartCoroutine(AddItemToCart(this));
+    }
+
+    IEnumerator AddItemToCart(Item item)
+    {
+        string phone = GameManager.instance.phone;
+        int arValue = item.ar ? 1 : 0;
+
+        UnityWebRequest request = UnityWebRequest.Get("http://47.94.221.211:3000/add_cart?phone=" + phone + "&iname=" + item.iname + "&showname=" + item.showname + "&description=" + item.description + "&price=" + item.price + "&ar=" + arValue);
+        yield return request.SendWebRequest();
+
+        Debug.Log("Add Item to Cart Response: " + request.downloadHandler.text);
+
+        if (request.downloadHandler.text == "success")
+        {
+            Debug.Log("Add Item to Cart Success");
+            GlobalNotification.instance.Notify("添加成功!");
+        }
+        else
+        {
+            Debug.Log("Add Item to Cart Failed");
+            GlobalNotification.instance.Notify("添加失败!");
+        }
+
+        GameManager.instance.LoadScene("Main");
+    }
+
+    public void OnRemoveButtonClicked()
+    {
+        StartCoroutine(RemoveItemFromCart(this));
+    }
+
+    IEnumerator RemoveItemFromCart(Item item)
+    {
+        string phone = GameManager.instance.phone;
+
+        UnityWebRequest request = UnityWebRequest.Get("http://47.94.221.211:3000/remove_cart?phone=" + phone + "&iname=" + item.iname);
+        yield return request.SendWebRequest();
+
+        Debug.Log("Remove Item from Cart Response: " + request.downloadHandler.text);
+
+        if (request.downloadHandler.text == "success")
+        {
+            Debug.Log("Remove Item from Cart Success");
+            // GlobalNotification.instance.Notify("移除成功!");
+        }
+        else
+        {
+            Debug.Log("Remove Item from Cart Failed");
+            GlobalNotification.instance.Notify("移除失败!");
+        }
+
+        CartPageManager cartPageManager = FindObjectOfType<CartPageManager>();
+        cartPageManager.DecreaseTotalPrice(price);
+        Destroy(gameObject);
     }
 
     public IEnumerator DownloadImage()

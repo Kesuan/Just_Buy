@@ -68,8 +68,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u63CF\u8FF0\u63CF\u8FF0"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 7a6abde4090244860baceaebca837c2d, type: 2}
-  m_sharedMaterial: {fileID: 3294237386456909833, guid: 7a6abde4090244860baceaebca837c2d, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: eb8bacd46357fb4418b3d529965e7b08, type: 2}
+  m_sharedMaterial: {fileID: 2979193228837331801, guid: eb8bacd46357fb4418b3d529965e7b08, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -308,8 +308,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Lian
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 7a6abde4090244860baceaebca837c2d, type: 2}
-  m_sharedMaterial: {fileID: 3294237386456909833, guid: 7a6abde4090244860baceaebca837c2d, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: eb8bacd46357fb4418b3d529965e7b08, type: 2}
+  m_sharedMaterial: {fileID: 2979193228837331801, guid: eb8bacd46357fb4418b3d529965e7b08, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -519,8 +519,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u5355\u4EF7\uFF1AX\u5143"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 7a6abde4090244860baceaebca837c2d, type: 2}
-  m_sharedMaterial: {fileID: 3294237386456909833, guid: 7a6abde4090244860baceaebca837c2d, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: eb8bacd46357fb4418b3d529965e7b08, type: 2}
+  m_sharedMaterial: {fileID: 2979193228837331801, guid: eb8bacd46357fb4418b3d529965e7b08, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -544,7 +544,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 61
+  m_fontSize: 55.2
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -654,8 +654,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u8D2D\u4E70"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 7a6abde4090244860baceaebca837c2d, type: 2}
-  m_sharedMaterial: {fileID: 3294237386456909833, guid: 7a6abde4090244860baceaebca837c2d, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: eb8bacd46357fb4418b3d529965e7b08, type: 2}
+  m_sharedMaterial: {fileID: 2979193228837331801, guid: eb8bacd46357fb4418b3d529965e7b08, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -679,7 +679,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
+  m_fontSize: 48.3
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -975,4 +975,16 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5343211561112904069}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5343211559759416261}
+        m_TargetAssemblyTypeName: Item, Assembly-CSharp
+        m_MethodName: OnBuyButtonClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

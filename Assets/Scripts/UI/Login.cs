@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -35,6 +34,9 @@ public class Login : MonoBehaviour
             statusText.color = Color.green;
 
             yield return new WaitForSeconds(1);
+            GameManager.instance.phone = phoneText;
+            GameManager.instance.password = passwordText;
+            GameManager.instance.LoadScene("Main");
         }
         else
         {

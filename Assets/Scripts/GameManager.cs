@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -9,6 +7,10 @@ public class GameManager : MonoBehaviour
     public float resX = 1179;
     public float resY = 2556;
 
+    public string phone;
+    public string password;
+
+    public GameObject arPrefab;
 
     private void Awake()
     {
@@ -16,11 +18,11 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
         }
-        else
-        {
-            Destroy(this.gameObject);
-        }
+        DontDestroyOnLoad(this);
+    }
 
-        DontDestroyOnLoad(this.gameObject);
+    public void LoadScene(string sceneName)
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
     }
 }

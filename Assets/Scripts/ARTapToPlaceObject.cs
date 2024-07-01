@@ -19,6 +19,8 @@ public class ARTapToPlaceObject : MonoBehaviour
     void Start()
     {
         arRaycastManager = FindObjectOfType<ARRaycastManager>();
+
+        objectToPlace = GameManager.instance.arPrefab;
     }
 
     // Update is called once per frame

@@ -31,15 +31,8 @@ public class DefaultPageManager : MonoBehaviour
     private ItemClass ReturnItemJsonDataByJsonUtility(string json)
     {
         ItemClass item = JsonUtility.FromJson<ItemClass>(json);
-        // Debug.Log(item.iname);
-        // Debug.Log(item.showname);
-        // Debug.Log(item.description);
-        // Debug.Log(item.price);
-        // Debug.Log(item.ar);
         return item;
     }
-
-
 
     IEnumerator GetItems()
     {

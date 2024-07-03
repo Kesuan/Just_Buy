@@ -39,11 +39,13 @@ app.get("/login", function (req, res) {
 });
 
 app.get("/register", function (req, res) {
+    var nickname = req.query.nickname;
     var phone = req.query.phone;
     var password = req.query.password;
+    var address = req.query.address;
 
-    let sql = 'INSERT INTO user (phone, password) VALUES (?, ?)';
-    conn.query(sql, [phone, password], (err, result) => {
+    let sql = 'INSERT INTO user (phone, password, nickname, address) VALUES (?, ?, ?, ?)';
+    conn.query(sql, [phone, password, nickname, address], (err, result) => {
         if (err) {
             res.send("error");
         } else {
@@ -186,3 +188,11 @@ app.get("/submit_order", function (req, res) {
     });
 });
 // [End]: order table services
+
+var fs = require("fs");
+app.put("/upload", function (req, res) {
+    // 打开文件，没有文件则创建
+    var stream = fs.createWriteStream("./images/" + req.query.filename);
+    req.pipe(stream);
+    res.send("success");
+});
